@@ -17,8 +17,6 @@ RUN chmod -R g+rw /.llama /.cache
 USER 1000
 WORKDIR /var/www
 
-RUN git clone https://github.com/meta-llama/llama-stack.git /var/www
-
 COPY requirements-llamastack.txt .
 COPY requirements-llamastack-nodeps.txt .
 COPY anthropic-run.yaml .

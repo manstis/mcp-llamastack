@@ -41,5 +41,6 @@ torch
 torchvision
 
 # Extra
+llama-stack
 llama_stack_client
-faiss
+faiss-cpu
