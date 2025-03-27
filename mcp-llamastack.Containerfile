@@ -11,8 +11,8 @@ RUN dnf install -y \
     python3.12 \
     python3.12-pip
 
-RUN mkdir -p /.llama /.cache
-RUN chmod -R g+rw /.llama /.cache
+RUN mkdir -p /.llama /.llama/distributions/anthropic /.cache
+RUN chmod -R g+rw /.llama /.llama/distributions/anthropic /.cache
 
 USER 1000
 WORKDIR /var/www
@@ -20,6 +20,8 @@ WORKDIR /var/www
 COPY requirements-llamastack.txt .
 COPY requirements-llamastack-nodeps.txt .
 COPY anthropic-run.yaml .
+# Uncomment if you want to use existing RAG data
+# COPY faiss_store.db /.llama/distributions/anthropic
 
 # Compile Python/Django application
 RUN /usr/bin/python3.12 -m venv /var/www/venv
